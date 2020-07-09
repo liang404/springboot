@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fms.mapper.RoomDao">
+    <select id="findAll" resultType="Room">
+        select * from tb_room
+    </select>
+    <select id="findById" parameterType="int" resultType="Room">
+        select * from tb_room where id=#{id}
+    </select>
+    <select id="findByStatus" resultType="Room">
+        select * from tb_room where status=0
+    </select>
+    <update id="update" parameterType="Room">
+        update tb_room set location=#{location},status=#{status} where id=#{id}
+    </update>
+    <insert id="add" parameterType="Room">
+        insert into tb_room values(#{id},#{location},#{status})
+    </insert>
+    <delete id="deleteByRoomId" parameterType="int">
+        delete from tb_room where id=#{id}
+    </delete>
+</mapper>

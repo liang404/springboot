@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fms.mapper.KeChengDao">
+
+    <!--查询所有-->
+    <select id="findAll" resultType="KeCheng">
+        select * from tb_class
+    </select>
+
+    <!--根据员工id查询员工信息-->
+    <select id="findById" parameterType="int" resultType="KeCheng">
+        select * from tb_class where id = #{id}
+    </select>
+
+    <!--保存员工的方法-->
+    <insert id="save" parameterType="KeCheng">
+        insert into tb_class  values (#{id},#{name},#{start},#{end},#{schooltime},#{classroomId},#{price},#{putaway},#{vip},#{coachId})
+    </insert>
+
+
+    <!--删除员工的方法-->
+    <delete id="deleteByid" parameterType="int">
+        delete from tb_class where id = #{id}
+    </delete>
+
+
+
+    <!--更新的实现-->
+    <update id="update" parameterType="KeCheng">
+        update tb_class set id =#{id},name#{name},start=#{start},end=#{end},schooltime=#{schooltime},classroomId=#{classroomId},price=#{price},putaway=#{putaway},vip=#{vip},coachId=#{coachId} where id=#{id}
+    </update>
+
+
+</mapper>
